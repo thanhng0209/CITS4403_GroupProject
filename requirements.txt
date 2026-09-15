@@ -1,0 +1,7 @@
+jupyter
+numpy
+scipy
+matplotlib
+pandas
+networkx
+tornado<6.5

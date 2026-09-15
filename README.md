@@ -22,6 +22,24 @@ Under what network topologies and infection rates does decentralized local node 
 - Complex Networks
 - IoT malware propagation
 
+The current model includes:
+
+- Agent-Based Modelling
+- Complex Networks
+- IoT malware propagation
+- Random, Small-World, and Scale-Free network topologies
+- Random centralized patching
+- Degree-targeted centralized patching
+- Decentralized local node isolation
+
+## Setup
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd CITS4403_GroupProject
+
 ## Team Members
 
 - Ben Nguyen
