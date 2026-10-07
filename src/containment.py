@@ -308,14 +308,21 @@ def infection_isolation_step(
             continue
 
         # Local response is attempted before malware transmission.
-        if rng.random() < isolation_prob:
+        isolation_multiplier = G.nodes[node].get("isolation_multiplier", 1.0)
+        effective_isolation_prob = min(
+            1.0,
+            isolation_prob * isolation_multiplier,
+        )
+        if rng.random() < effective_isolation_prob:
             nodes_to_isolate.append(node)
             continue
 
         # If isolation fails, each infected neighbour gets an independent
         # opportunity to transmit malware.
         for _ in infected_neighbours:
-            if rng.random() < beta:
+            susceptibility = G.nodes[node].get("susceptibility", 1.0)
+            transmission_probability = min(1.0, beta * susceptibility)
+            if rng.random() < transmission_probability:
                 nodes_to_infect.append(node)
                 break
 
