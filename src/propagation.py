@@ -96,7 +96,9 @@ def infection_step(G, beta, rng):
             if G.nodes[neighbour]["state"] != SUSCEPTIBLE:
                 continue
 
-            if rng.random() < beta:
+            susceptibility = G.nodes[neighbour].get("susceptibility", 1.0)
+            transmission_probability = min(1.0, beta * susceptibility)
+            if rng.random() < transmission_probability:
                 newly_infected.add(neighbour)
 
     # Apply all infections only after every transmission attempt for the
